@@ -48,3 +48,15 @@
     justify-content: end;
     column-gap: 20px;
 }
+
+.option {
+    padding: 8px 0px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.option:hover {
+    background-color: #cccccc;
+}

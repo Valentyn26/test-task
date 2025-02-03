@@ -12,6 +12,8 @@ import Option from "./components/UI/Dropdown/Option";
 import { CountryContext } from "./context/countryContext";
 import { StatusContext } from "./context/statusContext";
 import { UserContext } from "./context/userContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store";
 
 export default function Users() {
 
@@ -23,9 +25,6 @@ export default function Users() {
 
   const statusContext = useContext(StatusContext);
   const statuses = statusContext ? statusContext.statuses : [];
-
-  const userContext = useContext(UserContext);
-  const users = userContext ? userContext.users : [];
 
 
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
@@ -51,23 +50,6 @@ export default function Users() {
     status: []
   });
 
-  function filterUsers(filters: Filters) {
-    return users.filter(user => {
-      const matchesCountry = filters.country?.length
-        ? filters.country.includes(user.country.value)
-        : true;
-
-      const matchesDepartment = filters.department?.length
-        ? filters.department.includes(user.department.value)
-        : true;
-
-      const matchesStatus = filters.status?.length
-        ? filters.status.includes(user.status.value)
-        : true;
-
-      return matchesCountry && matchesDepartment && matchesStatus;
-    });
-  };
 
   function setDep(dep: Department) {
     if (filters.department.includes(dep.value)) {
@@ -99,11 +81,15 @@ export default function Users() {
     }
   }
 
-  const [filteredUsers, setFilteredUsers] = useState(users);
+  const users = useSelector((state: RootState) => state.users.users)
+  const filteredUsers = useSelector((state: RootState) => state.users.filteredUsers);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setFilteredUsers(filterUsers(filters));
-  }, [filters]);
+    if (users) {
+      dispatch({ type: "FILTER_USER", payload: filters });
+    }
+  }, [filters, users]);
 
   return (
     <main className="main">
@@ -134,7 +120,7 @@ export default function Users() {
               <Button onClick={handleModalOpen} type="button" width="150px">Add User</Button>
             </div>
           </div>
-          <UserList filteredUsers={filteredUsers} />
+          <UserList filteredUsers={filteredUsers} filters={filters} />
         </section>
       </div>
       <AddUserModal isOpened={isModalOpened} setIsOpened={setIsModalOpened} />

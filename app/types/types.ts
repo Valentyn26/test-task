@@ -20,3 +20,10 @@ export type User = {
     department: Department;
     country: Country;
 };
+
+export type AddUser = {
+    name: string;
+    status: Status;
+    department: Department;
+    country: Country;
+}
