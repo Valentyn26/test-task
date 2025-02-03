@@ -1,4 +1,6 @@
-import React, { createContext, useContext, ReactNode } from "react";
+"use client";
+
+import React, { createContext, ReactNode } from "react";
 
 type Department = {
     name: string;

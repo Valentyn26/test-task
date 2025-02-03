@@ -13,11 +13,6 @@
     visibility: visible;
 }
 
-.modal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
 .modal__box {
     border: 1px solid #000;
     padding: 40px 60px;

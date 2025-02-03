@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+"use client";
+
+import React, { createContext, useState, ReactNode } from "react";
 
 type Status = {
     name: string;
