@@ -12,6 +12,14 @@
     border: 1px solid #000;
 }
 
+.dropdown.open .dropdown__title {
+    border-bottom: none;
+}
+
+.dropdown.open .dropdown__arrow {
+    transform: rotate(180deg);
+}
+
 .dropdown__body {
     background-color: #fff;
     max-height: 160px;
@@ -19,9 +27,14 @@
     padding: 0px 24px;
     border: 1px solid #000;
     position: absolute;
-    top: 100%;
+    top: 98%;
     left: 0;
     display: none;
+}
+
+.dropdown.open .dropdown__body {
+    display: block;
+    border-top: none;
 }
 
 .dropdown__body::-webkit-scrollbar {

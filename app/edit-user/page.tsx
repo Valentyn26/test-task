@@ -18,7 +18,9 @@ export default function EditUserPage() {
                         <div className="edit__fields">
                             <label className="edit__name">
                                 Full Name
-                                <Dropdown title="Select user" width="500px"></Dropdown>
+                                <Dropdown title="Select user" width="500px">
+
+                                </Dropdown>
                             </label>
                             <label className="edit__department">
                                 Department

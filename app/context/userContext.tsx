@@ -1,29 +1,7 @@
 "use client";
 
 import React, { createContext, useState, ReactNode } from "react";
-
-type Status = {
-    name: string;
-    value: string;
-};
-
-type Department = {
-    name: string;
-    value: string;
-};
-
-type Country = {
-    name: string;
-    value: string;
-};
-
-type User = {
-    id: number;
-    name: string;
-    status: Status;
-    department: Department;
-    country: Country;
-};
+import { User } from "../types/types";
 
 type UserContextType = {
     users: User[];

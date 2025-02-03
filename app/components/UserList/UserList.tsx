@@ -2,15 +2,20 @@ import { use, useContext } from "react";
 import TrashButton from "../UI/Button/TrashButton";
 import styles from "./UserList.module.css";
 import { UserContext } from "@/app/context/userContext";
+import { User } from "@/app/types/types";
 
-export default function UserList() {
+type UserListProps = {
+    filteredUsers: User[];
+}
+
+export default function UserList({ filteredUsers }: UserListProps) {
     const context = useContext(UserContext);
 
     if (!context) {
         return <div>Loading...</div>;
     }
 
-    const { users, deleteUser } = context;
+    const { deleteUser } = context;
 
     return (
         <div className={styles.table}>
@@ -23,7 +28,7 @@ export default function UserList() {
             </div>
 
             <div className={styles.table__body}>
-                {users.map(user =>
+                {filteredUsers.map(user =>
                     <div key={user.id} className={styles.table__row}>
                         <div>{user.name}</div>
                         <div>{user.department.name}</div>
