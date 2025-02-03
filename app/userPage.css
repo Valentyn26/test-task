@@ -1,0 +1,17 @@
+.filter {}
+
+.filter__hint {
+    margin-bottom: 12px;
+}
+
+.filter__body {
+    display: flex;
+    column-gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter__addButton {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: end;
+}
