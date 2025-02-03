@@ -18,6 +18,23 @@
 .table__body {
     display: flex;
     flex-direction: column;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.table__body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.table__body::-webkit-scrollbar-track {
+    background: #869DC820;
+    border-radius: 8px;
+
+}
+
+.table__body::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 8px;
 }
 
 .table__row {

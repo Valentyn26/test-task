@@ -1,7 +1,17 @@
+import { use, useContext } from "react";
 import TrashButton from "../UI/Button/TrashButton";
 import styles from "./UserList.module.css";
+import { UserContext } from "@/app/context/userContext";
 
 export default function UserList() {
+    const context = useContext(UserContext);
+
+    if (!context) {
+        return <div>Loading...</div>;
+    }
+
+    const { users, deleteUser } = context;
+
     return (
         <div className={styles.table}>
             <div className={styles.table__header}>
@@ -13,20 +23,15 @@ export default function UserList() {
             </div>
 
             <div className={styles.table__body}>
-                <div className={styles.table__row}>
-                    <div>Andrey Olishchuck</div>
-                    <div>Digital marketing</div>
-                    <div>Ukraine</div>
-                    <div>Active</div>
-                    <div><TrashButton /></div>
-                </div>
-                <div className={styles.table__row}>
-                    <div>Andrey Olishchuck</div>
-                    <div>Digital marketing</div>
-                    <div>Ukraine</div>
-                    <div>Active</div>
-                    <div><TrashButton /></div>
-                </div>
+                {users.map(user =>
+                    <div key={user.id} className={styles.table__row}>
+                        <div>{user.name}</div>
+                        <div>{user.department.name}</div>
+                        <div>{user.country.name}</div>
+                        <div>{user.status.name}</div>
+                        <div><TrashButton onClick={() => deleteUser(user.id)} /></div>
+                    </div>
+                )}
             </div>
         </div>
     )
