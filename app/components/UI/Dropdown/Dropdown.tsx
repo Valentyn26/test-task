@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useState } from "react";
 import styles from "./Dropdown.module.css";
 import Option from "./Option";
