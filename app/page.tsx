@@ -1,3 +1,4 @@
+import AddUserModal from "./components/Modals/AddUserModal";
 import Button from "./components/UI/Button/Button";
 import TrashButton from "./components/UI/Button/TrashButton";
 import Dropdown from "./components/UI/Dropdown/Dropdown";
@@ -28,6 +29,7 @@ export default function Users() {
           <UserList />
         </section>
       </div>
+      <AddUserModal />
     </main>
   );
 }
